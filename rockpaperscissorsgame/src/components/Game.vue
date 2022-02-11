@@ -1,13 +1,37 @@
 <template>
     <div class="container">
-        <h1>Rock Paper Scissors</h1>
-        <div class="score">
-            <h2>{{this.playerScore}} - {{this.computerScore}} </h2>
+        <h1 class="text-center mt-5">Rock Paper Scissors</h1>
+          <h4 class="text-center mb-3">Try your luck</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center score">
+                            <h2>Player: {{this.playerScore}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center score">
+                            <h2>Computer: {{this.computerScore}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button type="button" class="btn btn-primary" v-on:click="selected = 'rock'">rock</button>
-        <button type="button" class="btn btn-danger" v-on:click="selected = 'paper'">paper</button>
-        <button type="button" class="btn btn-success" v-on:click="selected = 'scissors'">scissors</button>
-        <button type="button" class="btn btn-secondary" v-on:click="play">computer plays</button>
+
+
+        <div class="container">
+            <div class="d-flex justify-content-center mt-5">
+                <button class="button" v-on:click="selected = 'rock'">Rock</button>
+                <button  class="button" v-on:click="selected = 'paper'">Paper</button>
+                <button  class="button" v-on:click="selected = 'scissors'">Scissors</button>
+            </div>
+            <!-- <button type="button" class="btn btn" v-on:click="play">computer plays</button> -->
+        </div>
             <p>your choice: {{ selected }}</p>
             <p>computer's choice: {{ computerSelected }}</p>
             <div>{{ result }}</div>
