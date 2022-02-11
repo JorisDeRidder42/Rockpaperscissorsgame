@@ -53,24 +53,38 @@
     },
     computed: {
             result() {
-            if (this.computerSelected === this.selected) {
-                return `it's a tie`;
-            } else {
-                if ((this.computerSelected === "rock" && this.selected === "scissors") || (this.computerSelected === "paper" && this.selected === "rock") ||(this.computerSelected === "scissors" && this.selected === "paper")) {
-                return "computer won";
-                }
-                return "player won";
-                }
-            },
+                this.play();
+                this.score();
+                this.checkScore();
+                return ''
+            }
         },
         methods: {
             play() {
-                if (!this.selected) {
-                    console.log("Make a choice");
-                return 'Please select a choice';
-            }
             const computerChoice = Math.floor(Math.random() * choices.length);
             this.computerSelected = choices[computerChoice];
+            },
+            score(){
+                if (this.computerSelected === this.selected) { 
+                    return "it's a tie";
+                } else {
+                 this.play();
+                if ((this.computerSelected === "rock" && this.selected === "scissors") || (this.computerSelected === "paper" && this.selected === "rock") ||(this.computerSelected === "scissors" && this.selected === "paper")) {
+                 this.checkScore();
+                    this.computerScore++;
+                return "computer won";
+                }
+                 this.checkScore();
+                 this.playerScore++;
+                return "player won";
+                }
+            },
+            checkScore(){
+                if (this.playerScore === 5) {
+                    return "Player won"
+                }
+                else if(this.computerScore === 5)
+                    return "computer won"
             }
         }     
  };
