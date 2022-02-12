@@ -83,7 +83,7 @@
                             this.clash();
                         return this.computerSelected 
                     }
-                    return this.errors = 'selecteer een keuze';
+                    return this.errors = 'selecteer een keuze'; //blijft staan zelfs als er iets anders is aangeduid
                 },
                 clash(){
                     if (this.computerSelected === this.selected) {
@@ -104,6 +104,7 @@
                     this.selected = "";
                     this.computerSelected = "";
                     this.resultaat = "";
+                    this.errors = "";
                 }
     }
  };
