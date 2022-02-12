@@ -6,3 +6,10 @@
     margin: 1em;
     background-color: rgb(216, 216, 216);
   }
+  h4 span{
+    color: blue;
+    text-decoration: underline;
+  }
+  h2{
+    color: red;
+  }

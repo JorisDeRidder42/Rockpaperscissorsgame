@@ -30,12 +30,20 @@
                 <button  class="button" v-on:click="selected = 'paper'">Paper</button>
                 <button  class="button" v-on:click="selected = 'scissors'">Scissors</button>
             </div>
-            <!-- <button type="button" class="btn btn" v-on:click="play">computer plays</button> -->
+
+            <div class="d-flex justify-content-center">
+                <button class="button" v-on:click="restart">Restart the game</button>
+            </div>
         </div>
-            <p>your choice: {{ selected }}</p>
-            <p>computer's choice: {{ computerSelected }}</p>
-            <div>{{ result }}</div>
+        
+        <div class="container">
+            <div class="row">
+                <h4>your choice: <span>{{ selected }}</span></h4>
+                <h4>computer's choice: <span>{{ computerSelected }}</span></h4>
+                <h2>{{ result }}</h2>
+            </div>
         </div>
+    </div>
 </template> 
 
 
@@ -47,6 +55,7 @@
          return {
        selected: "",
        computerSelected: "",
+       resultaat: "",
        playerScore: 0,
        computerScore: 0
      }
@@ -55,8 +64,7 @@
             result() {
                 this.play();
                 this.score();
-                this.checkScore();
-                return ''
+                return this.resultaat
             }
         },
         methods: {
@@ -66,25 +74,22 @@
             },
             score(){
                 if (this.computerSelected === this.selected) { 
-                    return "it's a tie";
+                    return this.resultaat = "it's a tie";
                 } else {
                  this.play();
                 if ((this.computerSelected === "rock" && this.selected === "scissors") || (this.computerSelected === "paper" && this.selected === "rock") ||(this.computerSelected === "scissors" && this.selected === "paper")) {
-                 this.checkScore();
                     this.computerScore++;
-                return "computer won";
+                return this.resultaat = "computer won";
                 }
-                 this.checkScore();
                  this.playerScore++;
-                return "player won";
+                return this.resultaat = "player won";
                 }
             },
-            checkScore(){
-                if (this.playerScore === 5) {
-                    return "Player won"
-                }
-                else if(this.computerScore === 5)
-                    return "computer won"
+            restart(){
+                this.playerScore = -1; //geen idee waarom...
+                this.computerScore = 0;
+                this.computerSelected = "";
+                this.selected = "";
             }
         }     
  };
